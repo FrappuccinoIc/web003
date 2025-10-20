@@ -4,7 +4,7 @@
 <hr>
 
 {% for p in posts %}
-<p>{{ p.published|date:"SHORT_DATE_FORMATX" }}</p>
+<p>{{ p.published|date:"SHORT_DATE_FORMAT" }}</p>
 <p>{{ p.title }}</p>
 <p>Publicado por: {{ p.author }}</p>
 <p>Categoria: {{ p.categories.all|join:", " }}</p>
