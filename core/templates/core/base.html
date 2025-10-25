@@ -1,24 +1,73 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Home</h1>
-    {% block content %}{% endblock %}
-    <hr>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ PAGINA_NOMBRE }}</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    {% if LINK_INSTAGRAM %}
-    <p><a href="{{ LINK_INSTAGRAM }}">Instagram</a></p>
-    {% endif %}
-    {% if LINK_X %}
-    <p><a href="{{ LINK_X }}">X (Twitter lmfao)</a></p>
-    {% endif %}
-    {% if LINK_FACEBOOK %}
-    <p><a href="{{ LINK_FACEBOOK }}">Facebook</a></p>
-    {% endif %}
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'core/style/styles.css' %}">
+    </head>
+<body class="text-center">
 
-</body>
+    <header class="banner">
+        <nav class="navbar navbar-expand-md navbar-primary bg-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav me-auto mb-1 mb-md-0 align-items-center">
+                            <li class="nav-item fs-4"><img class="logo border border-primary-subtle border-3 rounded me-3" src="{% static 'core/imagenes/logo.jpg' %}" alt="logo"></li>
+                            <li class="nav-item"><p class="navbar-brand me-5 my-0 fs-3 oswald">{{ PAGINA_NOMBRE }}</p></li>
+                            <li class="nav-item"><a class="nav-link oswald fs-4" href="/">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link oswald fs-4" href="/blog">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="form-signin mt-5 w-100">
+        <div class="container mt-4 text-center">
+            <div class="row align-items-center mt-4 mb-4">
+                <div class="col ms-auto">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-4">
+        <nav class="navbar navbar-expand-md navbar-primary bg-primary footer p-0">
+            <div class="container row justify-content-center">
+                <div class="navbar-collapse d-flex flex-column my-1 ms-5 align-items-start">
+                    {% if LINK_INSTAGRAM %}
+                    <div class="link_row row p-2">
+                        <img class="col-2 img-fluid link_logo" src="{% static 'core/imagenes/instagram.png' %}" alt="Logo Instagram">
+                        <a class="col-4 text-warning nav-link oswald fs-5" href="{{ LINK_INSTAGRAM }}">Instagram</a>
+                    </div>
+                    {% endif %}
+                    {% if LINK_X %}
+                    <div class="link_row row p-2">
+                        <img class="col-2 img-fluid link_logo" src="{% static 'core/imagenes/x_logo.png' %}" alt="Logo X">
+                        <a class="col-4 text-warning nav-link oswald fs-5" href="{{ LINK_X }}">X</a>
+                    </div>
+                    {% endif %}
+                    {% if LINK_FACEBOOK %}
+                    <div class="link_row row p-2">
+                        <img class="col-2 img-fluid link_logo" src="{% static 'core/imagenes/facebook_logo.png' %}" alt="Logo Facebook">
+                        <a class="col-4 text-warning nav-link oswald fs-5" href="{{ LINK_FACEBOOK }}">Facebook</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  </body>
 </html>

@@ -5,4 +5,5 @@ def ctx_dict(request):
     links = LinkRed.objects.all()
     for l in links:
         ctx[l.key] = l.url
+    ctx["PAGINA_NOMBRE"] = "Web003"
     return ctx
