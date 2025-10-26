@@ -1,18 +1,24 @@
 {% extends 'venta/base.html' %}
+{% load static %}
 {% block content %}
 
-<hr>
-
 {% for p in posts %}
-<p>{{ p.published|date:"SHORT_DATE_FORMAT" }}</p>
-<p>{{ p.title }}</p>
-<p>Publicado por: {{ p.author }}</p>
+<div class="bg-warning-subtle container row text-start ps-5 bg-white border border-primary border-3 rounded my-3 py-3">
 
-{% for c in p.categories.all %}
-    <p><a href="{% url 'category' c.id %}">{{c.name}}</a></p>
-{% endfor %}
+    <div class="container row justify-content-between">
+        <h3 class="col-10">{{ p.title }}</h3>
+        <h5 class="col-2 text-muted align-self-end">{{ p.published|date:"SHORT_DATE_FORMAT" }}</h5>
+    </div>
+    <h5 class="text-muted">Publicado por: {{ p.author }}</h5>
+    <h4 class="py-4 px-5" >Descripción</h4>
 
-<hr>
+    <h5 class="text-muted">Tags: 
+        {% for c in p.categories.all %}
+            <a href="{% url 'category' c.id %}">{{c.name}}</a>
+            {% if not forloop.last %}, {% endif %}
+        {% endfor %}
+    </h5>
+</div>
 {% endfor %}
 
 {% endblock %}
