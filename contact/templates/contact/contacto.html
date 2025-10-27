@@ -5,6 +5,9 @@
 <hr>
 
 <table>
+    {% if 'ok' in request.GET %}
+        <h3>Tu mensaje fue enviado exitosamente</h3>
+    {% endif %}
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_table }}
