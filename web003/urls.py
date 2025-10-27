@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from venta import views as views_venta
 from core import views as views_core
@@ -9,6 +9,7 @@ urlpatterns = [
     path('blog/', views_venta.blog, name = "blog"),
     path('category/<int:category_id>', views_venta.category, name = "category"),
     path('admin/', admin.site.urls),
+    path('contact/', include("contact.urls")),
 ]
 
 if settings.DEBUG:
